@@ -1,0 +1,263 @@
+@import url(./reset.css);
+
+@font-face {
+  font-family: "Montserrat";
+  src: url(../font/Montserrat-VariableFont_wght.ttf);
+}
+
+:root {
+  --main-color: #5e63ba;
+}
+
+body {
+  min-height: 100vh;
+  font-family: "Montserrat";
+  color: #333;
+  background-color: var(--main-color);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.container {
+  width: 70%;
+  padding: 5%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: #fff;
+  border-radius: 30px;
+}
+
+.hangman-box h1 {
+  margin-top: 30px;
+  text-align: center;
+}
+
+.game-box {
+  width: 60%;
+}
+.game-box ul {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+}
+.game-box ul li {
+  width: 50px;
+  height: 50px;
+  line-height: 50px;
+  border-bottom: 3px solid #333;
+  font-size: 40px;
+  font-weight: 600;
+  text-transform: uppercase;
+  text-align: center;
+}
+.game-box h4 {
+  margin-top: 1rem;
+  text-align: center;
+  font-weight: 500;
+  font-size: 16px;
+}
+.game-box h4 b {
+  font-weight: 700;
+}
+.game-box .hint-text {
+  line-height: 1.5;
+}
+.game-box .guesses-text b {
+  color: tomato;
+  font-size: 18px;
+}
+.game-box .keyboard {
+  margin-top: 50px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+  justify-content: center;
+}
+.game-box .keyboard button {
+  width: 50px;
+  height: 40px;
+  background-color: var(--main-color);
+  border-radius: 10px;
+  color: #fff;
+  font-size: 20px;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+.game-box .keyboard button:hover {
+  opacity: 0.7;
+}
+/* js [3]-5 */
+.game-box .keyboard button[disabled] {
+  opacity: 0.7;
+}
+/* //game-container */
+
+.game-modal {
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  z-index: 999;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* js [4]-2 */
+  opacity: 0;
+  pointer-events: none;
+}
+/* js [4]-2 */
+.show {
+  opacity: 1;
+  pointer-events: auto;
+}
+.game-modal .content {
+  width: 400px;
+  padding: 2rem;
+  border-radius: 20px;
+  background-color: #fff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.game-modal .content img {
+  max-width: 150px;
+}
+.game-modal .content h4 {
+  font-size: 20px;
+  margin: 1rem 0;
+}
+.game-modal .content p b {
+  font-weight: 600;
+  font-size: 18px;
+  text-transform: uppercase;
+  color: tomato;
+}
+.game-modal .content button {
+  margin-top: 2rem;
+  padding: 8px 16px;
+  border-radius: 5px;
+  background-color: var(--main-color);
+  color: #fff;
+  text-transform: uppercase;
+  font-weight: 600;
+  letter-spacing: 1px;
+}
+/* //game-modal */
+
+@media screen and (max-width: 1200px) {
+  body {
+    padding: 0 40px;
+  }
+  .container {
+    width: 100%;
+  }
+  .hangman-box h1 {
+    font-size: 24px;
+  }
+  .game-box ul li {
+    width: 40px;
+    height: 40px;
+    line-height: 40px;
+    font-size: 30px;
+  }
+  .game-box .keyboard button {
+    width: 40px;
+    font-size: 16px;
+  }
+}
+@media screen and (max-width: 991px) {
+  .hangman-box {
+    margin-right: 1rem;
+  }
+  .game-box {
+    width: 70%;
+  }
+}
+@media screen and (max-width: 767px) {
+  body {
+    padding: 1rem;
+  }
+  .container {
+    padding: 5% 1rem;
+  }
+  .hangman-box h1 {
+    font-size: 20px;
+  }
+  .game-box {
+    width: 80%;
+  }
+  .game-box ul li {
+    width: 30px;
+    height: 30px;
+    line-height: 30px;
+    font-size: 20px;
+  }
+  .game-box .keyboard button {
+    width: 30px;
+    font-size: 16px;
+  }
+
+  .game-modal .content img {
+    max-width: 120px;
+  }
+  .game-modal .content h4 {
+    font-size: 18px;
+    margin: 1rem 0;
+  }
+  .game-modal .content p b {
+    font-size: 16px;
+  }
+}
+@media screen and (max-width: 575px) {
+  .container {
+    padding: 1rem;
+    flex-direction: column;
+    justify-content: center;
+  }
+  .hangman-box {
+    margin-right: 0;
+  }
+  .hangman-box img {
+    width: 80%;
+    margin: auto;
+  }
+  .hangman-box h1 {
+    margin: 1rem 0;
+  }
+  .game-box {
+    width: 100%;
+  }
+  .game-box .keyboard {
+    margin-top: 2rem;
+  }
+}
+@media screen and (max-width: 430px) {
+  .hangman-box h1 {
+    font-size: 18px;
+  }
+  .game-box ul li {
+    border-bottom: 2px solid #333;
+    font-size: 18px;
+  }
+  .game-box h4 {
+    font-size: 14px;
+  }
+  .game-box h4 b {
+    font-size: 16px;
+    font-weight: 600;
+  }
+  .game-box .keyboard button {
+    font-weight: 600;
+  }
+
+  .game-modal .content {
+    width: 90%;
+  }
+  .game-modal .content p b {
+    display: block;
+    padding-top: 0.5rem;
+    text-align: center;
+  }
+}
